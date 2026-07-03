@@ -1,0 +1,553 @@
+:root {
+    /* =======================================================
+     COLORS
+  ======================================================= */
+
+    /* Brand */
+    --primary: #004f45;
+    --primary-container: #00695c;
+    --primary-fixed-dim: #84d5c5;
+    --on-primary: #ffffff;
+
+    /* Surfaces */
+    --surface: #f7faf8;
+    --surface-container-low: #f1f4f2;
+    --surface-container-lowest: #ffffff;
+    --surface-bright: #f7faf8;
+    --surface-container-highest: #edf2ef;
+
+    /* Text */
+    --on-surface: #181c1b;
+    --on-surface-variant: #5f6764;
+
+    /* Outline */
+    --outline: rgba(190, 201, 197, 0.20);
+    --outline-ghost: rgba(190, 201, 197, 0.15);
+
+    /* Secondary */
+    --secondary-container: #d6f3ea;
+    --on-secondary-container: #00443b;
+
+    /* States */
+    --success: #2e7d32;
+    --warning: #f59e0b;
+    --error: #d32f2f;
+
+    /* =======================================================
+     GRADIENTS
+  ======================================================= */
+
+    --gradient-primary: linear-gradient(135deg,
+            #004f45,
+            #00695c);
+
+    --gradient-subtle: linear-gradient(180deg,
+            #ffffff,
+            #f7faf8);
+
+    /* =======================================================
+     TYPOGRAPHY
+  ======================================================= */
+
+    --font-family: "Inter", sans-serif;
+
+    /* Display */
+
+    --display-lg: 4rem;
+    --display-md: 3rem;
+    --display-sm: 2.5rem;
+
+    /* Headlines */
+
+    --headline-lg: 2rem;
+    --headline-md: 1.5rem;
+    --headline-sm: 1.25rem;
+
+    /* Titles */
+
+    --title-lg: 1.125rem;
+    --title-md: 1rem;
+    --title-sm: .875rem;
+
+    /* Body */
+
+    --body-lg: 1rem;
+    --body-md: .875rem;
+    --body-sm: .75rem;
+
+    /* Labels */
+
+    --label-lg: .875rem;
+    --label-md: .75rem;
+    --label-sm: .6875rem;
+
+    --letter-tight: -.02em;
+    --letter-md: .03em;
+    --line-height: 1.5;
+
+    /* =======================================================
+     SPACING
+  ======================================================= */
+
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: .75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-8: 3rem;
+    --space-10: 4rem;
+    --space-12: 5rem;
+    --space-16: 5.5rem;
+
+    /* =======================================================
+     BORDER RADIUS
+  ======================================================= */
+
+    --radius-sm: .5rem;
+    --radius-md: .75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-pill: 999px;
+
+    /* =======================================================
+     SHADOWS
+  ======================================================= */
+
+    --shadow-ambient:
+        0 8px 24px rgba(24, 28, 27, .04);
+
+    --shadow-soft:
+        0 4px 16px rgba(24, 28, 27, .03);
+
+    /* =======================================================
+     GLASS
+  ======================================================= */
+
+    --glass-bg: rgba(247, 250, 248, .80);
+    --glass-bg-light: rgba(255, 255, 255, .70);
+    --glass-blur: blur(20px);
+
+    /* =======================================================
+     ANIMATION
+  ======================================================= */
+
+    --transition-fast: 180ms ease;
+    --transition-normal: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* =======================================================
+     LAYOUT
+  ======================================================= */
+
+    --content-width: 1180px;
+    --navbar-height: 78px;
+}
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0%;
+    text-decoration-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--on-surface);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================
+   REUSABLE UTILITIES
+========================================================== */
+
+.container {
+    width: min(100% - 3rem, var(--content-width));
+    margin-inline: auto;
+}
+
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.surface {
+    background: var(--surface);
+}
+
+.surface-low {
+    background: var(--surface-container-low);
+}
+
+.surface-card {
+    background: var(--surface-container-lowest);
+}
+
+.gradient-primary {
+    background: var(--gradient-primary);
+}
+
+.ghost-border {
+    border: 1px solid var(--outline-ghost);
+}
+
+.shadow {
+    box-shadow: var(--shadow-ambient);
+}
+
+/* ==========================================================
+    Disabled State
+============================================================= */
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   REUSABLE NAVBAR STYLES
+========================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--navbar-height);
+    z-index: 1000;
+    border-bottom: 1px solid var(--outline-ghost);
+    transition: box-shadow .25s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: var(--shadow-soft);
+}
+
+.navbar-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: var(--headline-lg);
+    font-weight: 900;
+    letter-spacing: var(--letter-tight);
+}
+
+/* ===========================
+   Navigation
+=========================== */
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: var(--on-surface-variant);
+    font-size: var(--body-md);
+    transition: .25s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ===========================
+   Actions
+=========================== */
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: var(--on-surface);
+    padding: .4rem;
+}
+
+/* Mobile download button hidden by default */
+
+.mobile-download-btn {
+    display: none;
+}
+
+/* ==========================================================
+   DESKTOP
+========================================================== */
+
+@media (min-width:768px){
+
+    .desktop-download-btn{
+        display:inline-flex;
+    }
+
+    .mobile-download-btn{
+        display:none !important;
+    }
+
+}
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:767px){
+
+    /* Hide desktop CTA */
+
+    .desktop-download-btn{
+        display:none;
+    }
+
+    /* Show hamburger */
+
+    .menu-toggle{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    /* Hide menu initially */
+
+    .navbar-menu{
+        position:absolute;
+        top:calc(var(--navbar-height) + 10px);
+        left:50%;
+        width:calc(100% - 2rem);
+        transform:translate(-50%,-20px);
+        opacity:0;
+        visibility:hidden;
+        pointer-events:none;
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        padding:var(--space-6);
+        gap:var(--space-2);
+        border-radius:var(--radius-xl);
+        background:rgba(255,255,255,.85);
+        backdrop-filter:blur(22px);
+        -webkit-backdrop-filter:blur(22px);
+        border:1px solid var(--outline-ghost);
+        box-shadow:0 18px 45px rgba(0,0,0,.08);
+        transition:
+            opacity .28s ease,
+            transform .28s ease,
+            visibility .28s ease;
+    }
+
+    /* Menu open */
+
+    .navbar-menu.show{
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+        transform:translate(-50%,0);
+    }
+
+    .navbar-link{
+        display:block;
+        width:100%;
+        padding:1rem;
+        border-radius:var(--radius-md);
+        transition:.2s;
+    }
+
+    .navbar-link:hover{
+        background:var(--surface-container-low);
+    }
+
+    /* Mobile download button */
+
+    .mobile-download-btn{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:.5rem;
+        width:100%;
+        margin-top:var(--space-4);
+
+    }
+
+}
+
+
+/* ==========================================================
+   BUTTONS & GENERAL INTERACTION ELEMENTS
+========================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: var(--body-md);
+    font-family: var(--font-family);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: transform var(--transition-fast), opacity var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--on-primary);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid rgba(0, 79, 69, 0.2);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.btn-dark {
+    background: var(--on-surface);
+    color: var(--surface);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4) var(--space-6);
+    box-shadow: var(--shadow-ambient);
+}
+
+.btn-dark:hover {
+    opacity: 0.9;
+}
+
+/* App badge inner typography styling */
+.btn-dark .btn-subtext {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    line-height: 1;
+    opacity: 0.7;
+}
+
+.btn-dark .btn-maintext {
+    font-size: var(--title-lg);
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.btn-dark .text-wrapper {
+    text-align: left;
+}
+
+
+/* ========================================================== 
+   SCROLL ANIMATIONS
+========================================================== */
+.fade-init {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.fade-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================
+   COMMON BASIC FOOTER
+========================================================== */
+
+.footer-basic {
+    background: var(--surface-container-low);
+    border-top: 1px solid var(--outline-ghost);
+    padding-block: var(--space-8);
+    width: 100%;
+}
+
+.footer-basic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer-basic-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        gap: var(--space-6);
+    }
+}
+
+.footer-basic-brand {
+    font-size: var(--headline-sm);
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.footer-basic-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-6);
+}
+
+.footer-basic-links a {
+    font-size: var(--body-sm);
+    color: var(--on-surface-variant);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-basic-links a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 79, 69, 0.3);
+}
+
+.footer-basic-copy {
+    font-size: var(--body-sm);
+    color: var(--on-surface-variant);
+    opacity: 0.7;
+}

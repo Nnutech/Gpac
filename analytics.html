@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GPac | Master Your Metrics</title>
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/analytics.css" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Shared Navigation Bar (Custom JS Element) -->
+    <gpac-header active="analytics"></gpac-header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+
+                <!-- Left -->
+                <div class="hero-content">
+
+                    <span class="badge-pill">
+                        <span class="material-symbols-outlined">analytics</span>
+                        Performance Analytics
+                    </span>
+
+                    <h1 class="hero-title">
+                        Understand Your <br>
+                        <span class="title-accent">Performance.</span>
+                    </h1>
+
+                    <p class="hero-desc">
+                        Visualize your academic progress with clear charts and performance insights.
+                        Track GPA trends across semesters, identify your strongest and weakest courses,
+                        and make informed decisions for future semesters.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="download.html#platforms" class="btn btn-primary btn-lg">
+                            <span class="material-symbols-outlined">
+                                download
+                            </span>
+                            Download GPac
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- Right -->
+                <div class="hero-illustration">
+
+                    <div class="hero-bg-blur"></div>
+
+                    <div class="mockup-frame animate-fade-in">
+                        <div class="mockup-image-container">
+
+                            <img class="mockup-img"
+                                alt="Sleek, minimalist desktop analytics interface presenting academic timeline trends"
+                                src="images/ABDUL W_ _ App design inspiration, Web design tips, Photoshop tutorial design.jpeg" />
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Visual Showcase / Bento Grid -->
+        <section class="bento-section">
+            <div class="container">
+
+                <div class="section-header">
+                    <h2 class="section-title">Academic Insights</h2>
+                    <p class="section-subtitle">
+                        Understand your academic performance through clear visualizations. Identify trends,
+                        compare semesters, and discover opportunities to improve your GPA.
+                    </p>
+                </div>
+
+                <div class="bento-grid">
+
+                    <!-- GPA Trend -->
+
+                    <div class="bento-card bento-col-8 card-light">
+
+                        <div class="card-header">
+
+                            <div>
+                                <h4 class="card-title">Semester GPA Trend</h4>
+                                <p class="card-desc">
+                                    Track how your GPA changes across semesters.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="forecasting-chart">
+                            <div class="chart-bar" style="height:55%"></div>
+                            <div class="chart-bar" style="height:63%"></div>
+                            <div class="chart-bar" style="height:60%"></div>
+                            <div class="chart-bar bar-accent" style="height:72%"></div>
+                            <div class="chart-bar" style="height:80%"></div>
+                            <div class="chart-bar" style="height:88%"></div>
+                            <div class="chart-bar" style="height:91%"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- Current GPA -->
+
+                    <div class="bento-card bento-col-4 card-solid">
+
+                        <span class="material-symbols-outlined solid-icon">
+                            school
+                        </span>
+
+                        <div class="solid-content">
+
+                            <h4 class="solid-card-title">
+                                Current GPA
+                            </h4>
+
+                            <div class="solid-card-value">
+                                3.88
+                            </div>
+
+                            <p class="solid-card-text">
+                                Monitor your current standing and stay on track toward your academic goals.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Grade Distribution -->
+
+                    <div class="bento-card bento-col-4 card-light">
+
+                        <h4 class="card-title">
+                            Grade Distribution
+                        </h4>
+
+                        <div class="breakdown-list">
+
+                            <div class="breakdown-item">
+                                <div class="item-meta">
+                                    <span class="item-name">A Grades</span>
+                                    <span class="item-grade">5</span>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width:62%"></div>
+                                </div>
+                            </div>
+
+                            <div class="breakdown-item">
+                                <div class="item-meta">
+                                    <span class="item-name">B Grades</span>
+                                    <span class="item-grade">2</span>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width:25%"></div>
+                                </div>
+                            </div>
+
+                            <div class="breakdown-item">
+                                <div class="item-meta">
+                                    <span class="item-name">C Grades</span>
+                                    <span class="item-grade">1</span>
+                                </div>
+
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width:13%"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Semester Summary -->
+
+                    <div class="bento-card bento-col-8 card-light">
+
+                        <div class="card-header">
+
+                            <h4 class="card-title">
+                                Semester Summary
+                            </h4>
+
+                            <span class="intensity-label">
+                                Current Semester
+                            </span>
+
+                        </div>
+
+                        <div class="summary-grid">
+
+                            <div class="summary-item">
+                                <h5>Courses</h5>
+                                <span>8</span>
+                            </div>
+
+                            <div class="summary-item">
+                                <h5>Credit Units</h5>
+                                <span>24</span>
+                            </div>
+
+                            <div class="summary-item">
+                                <h5>Semester GPA</h5>
+                                <span>3.88</span>
+                            </div>
+
+                            <div class="summary-item">
+                                <h5>Cumulative GPA</h5>
+                                <span>3.74</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Actionable Insights Section -->
+        <section class="insights-section">
+            <div class="container insights-grid">
+                <!-- Left Column: Visual Mockup -->
+                <div class="insights-visual">
+                    <div class="visual-wrapper">
+                        <div class="visual-decor"></div>
+                        <div class="visual-frame">
+                            <img class="visual-img"
+                                alt="Professional studio photograph showing a tablet interface summarizing academic data"
+                                src="images/Think of this as a week-in-the-life of an AI-first….jpeg" />
+                        </div>
+                        <!-- Insight Alert Bubble -->
+                        <div class="insight-alert-bubble animate-bounce">
+                            <div class="bubble-header">
+                                <span class="material-symbols-outlined">analytics</span>
+                                <span class="bubble-tag">Analytics</span>
+                            </div>
+
+                            <p class="bubble-text">
+                                Your GPA has improved steadily over the last three semesters.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Detail List -->
+                <div class="insights-content">
+                    <h2 class="section-title-large">Actionable <br />Insights.</h2>
+                    <div class="insights-stack">
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <span class="material-symbols-outlined">psychology</span>
+                            </div>
+                            <div class="insight-info">
+                                <h5 class="insight-heading">Cognitive Load Monitoring</h5>
+                                <p class="insight-text">Our engine detects periods of diminishing returns and suggests
+                                    optimized break intervals to keep your mind sharp.</p>
+                            </div>
+                        </div>
+
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <span class="material-symbols-outlined">auto_awesome</span>
+                            </div>
+                            <div class="insight-info">
+                                <h5 class="insight-heading">Gap Identification</h5>
+                                <p class="insight-text">Analytics pinpoints specific topics where your score trends
+                                    lower,
+                                    prioritizing them in your next review session.</p>
+                            </div>
+                        </div>
+
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <span class="material-symbols-outlined">trending_up</span>
+                            </div>
+                            <div class="insight-info">
+                                <h5 class="insight-heading">GPA Projection</h5>
+                                <p class="insight-text">See into the future. GPac calculates your final grades based on
+                                    current performance and suggests exactly what score you need on finals to hit your
+                                    goal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <gpac-footer></gpac-footer>
+
+    <!-- Footer -->
+    <script src="footer.js" defer></script>
+
+    <!-- Script Component for Reusable Header -->
+    <script src="header.js" defer></script>
+    <script src="analytics-tracker.js" defer></script>
+    <script src="scrollAnim.js"></script>
+</body>
+
+</html>

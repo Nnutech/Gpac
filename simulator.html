@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>What-If Simulator | GPac</title>
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/simulator.css" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation Bar -->
+    <gpac-header active="simulator"></gpac-header>
+
+    <main>
+        <!-- Hero Section -->
+        <!-- Redesigned Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <!-- Left Side: Copy and Actions -->
+                <div class="hero-content">
+                     <div class="badge-pill">
+                        <span class="material-symbols-outlined">alt_route</span>
+                        <span>What-If Simulator</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Map Your <span class="text-gradient">Future.</span>
+                    </h1>
+                    <p class="hero-desc">
+                        Explore different academic scenarios without affecting your real GPA records. Test potential
+                        grades, course loads, and outcomes to see how they would impact your GPA before exams.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="download.html#platforms">
+                            <button class="btn btn-primary">
+                                <span class="material-symbols-outlined">download</span>
+                                Start Simulating
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Dimensional GPA Comparison Preview -->
+                <div class="hero-illustration">
+                    <div class="illustration-frame">
+                        <div class="gpa-comparison-stack">
+                            <!-- Historical Baseline Card -->
+                            <div class="gpa-preview-card current-gpa">
+                                <span class="gpa-label">Current GPA</span>
+                                <div class="gpa-number">3.42</div>
+                                <span class="gpa-meta">Semester 4</span>
+                            </div>
+                            <!-- Future Simulated Projection Card -->
+                            <div class="gpa-preview-card simulated-gpa animate-float">
+                                <span class="gpa-label">Simulated GPA</span>
+                                <div class="gpa-number text-gradient">3.68</div>
+                                <div class="trending-badge">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                    <span>+0.26 Gain</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Soft Glow Element -->
+                        <div class="hero-bg-blur"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sandbox split visualization -->
+        <section class="sandbox-section">
+            <div class="container">
+                <div class="sandbox-wrapper">
+                    <!-- Left Side: Simulator Controls -->
+                    <div class="sandbox-controls">
+                        <div class="sandbox-header">
+                            <h2>Scenario Sandbox</h2>
+                            <p>Adjust your variables to see real-time projections.</p>
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-card">
+                                <div class="slider-info">
+                                    <span class="course-name">Advanced Calculus II</span>
+                                    <span class="course-grade">A- (Proposed)</span>
+                                </div>
+                                <input class="grade-slider" type="range" value="85" min="50" max="100" />
+                            </div>
+
+                            <div class="slider-card">
+                                <div class="slider-info">
+                                    <span class="course-name">Microeconomics 101</span>
+                                    <span class="course-grade">B+ (Proposed)</span>
+                                </div>
+                                <input class="grade-slider" type="range" value="70" min="50" max="100" />
+                            </div>
+
+                            <div class="slider-card">
+                                <div class="slider-info">
+                                    <span class="course-name">Intro to Ethics</span>
+                                    <span class="course-grade">A (Proposed)</span>
+                                </div>
+                                <input class="grade-slider" type="range" value="95" min="50" max="100" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Visual Projection -->
+                    <div class="sandbox-display">
+                        <div class="projection-grid">
+                            <!-- Current Card (Blurred out/historical reference) -->
+                            <div class="projection-card card-before">
+                                <span class="projection-label">Current GPA</span>
+                                <div class="gpa-value">3.42</div>
+                                <p class="projection-meta">As of Semester 4</p>
+                            </div>
+                            <!-- Future Simulated Card -->
+                            <div class="projection-card card-after animate-float">
+                                <span class="projection-label">Simulated GPA</span>
+                                <div class="gpa-value text-gradient">3.68</div>
+                                <div class="trending-badge">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                    <span>+0.26</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sandbox-decor"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk-Free Planning Bento Grid -->
+        <section class="bento-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Risk-Free Planning</h2>
+                    <p class="section-subtitle">Design your academic path with total confidence. No records are saved
+                        until you choose to commit.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Item 1 (Wide Sandbox Card) -->
+                    <div class="bento-card bento-wide">
+                        <div class="bento-card-content">
+                            <span class="material-symbols-outlined bento-icon">security</span>
+                            <h3 class="bento-card-title">Zero-Impact Sandbox</h3>
+                            <p class="bento-card-text">Experiment with drastic shifts—dropping a minor, switching
+                                majors, or overloading credits—without ever touching your actual registrar data.</p>
+                        </div>
+                        <span class="material-symbols-outlined bento-watermark">shield</span>
+                    </div>
+
+                    <!-- Item 2 (Solid Color Interactive Card) -->
+                    <div class="bento-card bento-solid">
+                        <div class="solid-percentage">100%</div>
+                        <div class="bento-card-content">
+                            <h3 class="bento-card-title">Private Simulation</h3>
+                            <p class="bento-card-text">Your "What-If" scenarios are private and visible only to you.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 (Outcome Probability) -->
+                    <div class="bento-card bento-standard">
+                        <span class="material-symbols-outlined bento-icon">analytics</span>
+                        <h3 class="bento-card-title">Outcome Probability</h3>
+                        <p class="bento-card-text">Our algorithm estimates the likelihood of achieving your simulated
+                            grades based on past performance trends.</p>
+                    </div>
+
+                    <!-- Item 4 (Instant Updates) -->
+                    <div class="bento-card bento-standard">
+                        <span class="material-symbols-outlined bento-icon">update</span>
+                        <h3 class="bento-card-title">Instant Updates</h3>
+                        <p class="bento-card-text">Every adjustment recalibrates your entire degree progress
+                            instantly across all semesters.</p>
+                    </div>
+
+                    <!-- Item 5 (Export) -->
+                    <div class="bento-card bento-standard">
+                        <span class="material-symbols-outlined bento-icon">download</span>
+                        <h3 class="bento-card-title">Export Vision</h3>
+                        <p class="bento-card-text">Download your simulated roadmap as a PDF to discuss with academic
+                            advisors during office hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action / Download -->
+        <section class="download-section">
+            <div class="container">
+                <div class="download-banner">
+                    <div class="banner-decor">
+                        <div class="decor-circle decor-circle-1"></div>
+                        <div class="decor-circle decor-circle-2"></div>
+                    </div>
+                    <h2 class="banner-title">Ready to See Your Potential?</h2>
+                    <p class="banner-desc">
+                        Join thousands of students using GPac to strategically navigate their academic journey.
+                        Available now for Web, iOS, and Android.
+                    </p>
+                    <a href="download.html">
+                        <button class="btn btn-primary">
+                            <span class="material-symbols-outlined">download</span>
+                            Download Now
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <gpac-footer></gpac-footer>
+
+    <!-- Footer -->
+    <script src="footer.js" defer></script>
+    <script src="header.js"></script>
+    <script src="analytics-tracker.js" defer></script>
+    <script src="scrollAnim.js"></script>
+</body>
+
+</html>
