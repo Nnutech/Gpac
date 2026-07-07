@@ -1,7 +1,7 @@
 (function () {
     // If your frontend and Node backend run on the same origin, 
     // you can use a relative URL path. Otherwise, provide your full backend host.
-    const ANALYTICS_ENDPOINT = 'https://vtx-industries-website.onrender.com/api/analytics/visit';
+    const ANALYTICS_ENDPOINT = 'https://vtx-industries.onrender.com/api/analytics/visits';
 
     function getVisitorId() {
         let id = localStorage.getItem('vtx_visitor_id');
