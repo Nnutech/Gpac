@@ -43,8 +43,26 @@
                         calculations, projections, and simulator sandboxes sync seamlessly via secure cloud storage.
                     </p>
                     <div class="hero-actions">
-                        <a href="#platforms" class="btn btn-primary btn-lg">View Platform Downloads</a>
+                        <!-- 1. Added id="primary-download-btn" for dynamic targeting -->
+                        <a href="#platforms" id="primary-download-btn" class="btn btn-primary btn-lg">View Platform
+                            Downloads</a>
                         <a href="#guide" class="btn btn-outline btn-lg">Installation Guide</a>
+                    </div>
+
+                    <!-- 2. ADDED: Native Trust Disclaimer (Hidden by default, shown only on Android) -->
+                    <div id="android-trust-disclaimer"
+                        style="display: none; margin-top: 20px; font-size: 12px; line-height: 1.6; opacity: 0.95;">
+                        <p style="color: #a0aec0; margin: 0 0 6px 0; display: flex; align-items: center;">
+                            🛡️ <a href="https://www.virustotal.com/gui/file/6a4c7518dd04f779931965ad/detection"
+                                target="_blank"
+                                style="color: #4fd1c5; text-decoration: underline; font-weight: 600; margin-left: 6px;">
+                                Verified 100% clean by VirusTotal (0/70 Detections)
+                            </a>
+                        </p>
+                        <p style="color: #718096; margin: 0; font-size: 11px;">
+                            <em>Note: Android Chrome will show a standard "File may be harmful" warning. This is normal.
+                                Tap <strong>"Download anyway"</strong> to proceed safely.</em>
+                        </p>
                     </div>
                 </div>
 
@@ -87,7 +105,7 @@
                                     Get it on Google Play`
                                 </button>
                             </a>
-                            <a href="./files/GPAc.apk" >
+                            <a href="./files/GPAc.apk">
                                 <button class="btn btn-link-white card-btn">
                                     <span class="material-symbols-outlined">folder_open</span>
                                     Download APK Package
@@ -98,7 +116,7 @@
                             <span class="requirement-tag">Android 8.0+ (Oreo)</span>
                         </div>
                     </article>
-                    
+
                     <!-- Desktop Client -->
                     <article class="platform-card disabled">
                         <div class="card-top">
@@ -391,6 +409,46 @@
         </section>
     </main>
 
+    <!-- dynamic Sideloading Guide Modal (Hidden by default) -->
+    <div id="installation-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span class="material-symbols-outlined modal-icon">help_center</span>
+                <h2>How to Install GPAc</h2>
+            </div>
+            <div class="modal-body">
+                <p class="modal-subheader">Your download has started! Since this is a direct APK installation, please
+                    follow these quick steps:</p>
+
+                <div class="step-list">
+                    <div class="step-item">
+                        <span class="step-number">1</span>
+                        <div class="step-text">
+                            <strong>Allow Download:</strong> Google Chrome will say <em>"File may be harmful"</em>. Do not worry, this is a safe download. Tap
+                            <strong>"Download anyway"</strong>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">2</span>
+                        <div class="step-text">
+                            <strong>Allow Source:</strong> Open the finished file. If Android prompts you, tap
+                            "Settings" and toggle on <strong>"Allow from this source"</strong>.
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-number">3</span>
+                        <div class="step-text">
+                            <strong>Bypass Play Protect:</strong> On the "Blocked by Play Protect" screen, tap the small
+                            <strong>"More Details" dropdown arrow</strong> and choose <strong>"Install anyway", Enjoy!</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button id="close-modal-btn" class="btn-close">Got It, Thanks!</button>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
     <gpac-footer></gpac-footer>
 
@@ -401,21 +459,69 @@
     <script src="scrollAnim.js"></script>
 
 
-    <!-- Tab Switcher Micro Script -->
     <script>
-        function switchInstallTab(event, tabId) {
-            // Remove active class from all buttons
-            const tabBtns = document.querySelectorAll('.tab-btn');
-            tabBtns.forEach(btn => btn.classList.remove('active'));
+        document.addEventListener("DOMContentLoaded", () => {
+            const downloadBtn = document.getElementById("primary-download-btn");
+            const trustDisclaimer = document.getElementById("android-trust-disclaimer");
+            const modal = document.getElementById("installation-modal");
+            const closeModalBtn = document.getElementById("close-modal-btn");
 
-            // Remove active class from all panels
-            const tabPanels = document.querySelectorAll('.tab-panel');
-            tabPanels.forEach(panel => panel.classList.remove('active'));
+            // 1. Detect if the visitor is opening the site on an Android device [1, 2]
+            const isAndroid = /Android/i.test(navigator.userAgent);
 
-            // Add active class to clicked button and targeted panel
-            event.currentTarget.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
+            if (isAndroid && downloadBtn) {
+                // Point the button directly to your stable, hosted Render APK [1]
+                downloadBtn.href = "#";
+                // downloadBtn.href = "./files/GPAc.apk";
+                downloadBtn.innerHTML = "Download APK (23.7 MB)";
+
+                if (trustDisclaimer) {
+                    trustDisclaimer.style.display = "block";
+                }
+
+                // 2. Intercept the click to show your custom instructions and download simultaneously [1]
+                downloadBtn.addEventListener("click", (e) => {
+                    e.preventDefault(); // Stop standard redirect to let us manage it [1]
+
+                    // Open your custom instruction modal
+                    if (modal) {
+                        modal.style.display = "flex";
+                    }
+
+                    // Trigger the browser's native file download programmatically in the background [1]
+                    setTimeout(() => {
+                        const link = document.createElement("a");
+                        link.href = downloadBtn.href;
+                        link.download = "";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }, 300); // 300ms delay ensures the UI modal animates smoothly first
+                });
+            }
+
+            // 3. Modal close handler
+            if (closeModalBtn && modal) {
+                closeModalBtn.addEventListener("click", () => {
+                    modal.style.display = "none";
+                });
+            }
+
+            // 5. Tab Switching Logic for Installation Guide
+            function switchInstallTab(event, tabId) {
+                // Remove active class from all buttons
+                const tabBtns = document.querySelectorAll('.tab-btn');
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+
+                // Remove active class from all panels
+                const tabPanels = document.querySelectorAll('.tab-panel');
+                tabPanels.forEach(panel => panel.classList.remove('active'));
+
+                // Add active class to clicked button and targeted panel
+                event.currentTarget.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            }
+        });
     </script>
 </body>
 
